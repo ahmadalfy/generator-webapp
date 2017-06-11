@@ -57,6 +57,19 @@ gulp.task('lint:test', () => {
     .pipe(gulp.dest('test/spec'));
 });
 
+<% if (includeModernizr) { -%>
+gulp.task('modernizr', () => {
+  return gulp.src([
+      'dist/scripts/{,*/}*.js',
+      'dist/styles/{,*/}*.css',
+      '!dist/scripts/vendor/*'
+    ])
+    .pipe($.modernizr())
+    .pipe($.uglify())
+    .pipe(gulp.dest('dist/scripts/vendor/'))
+});
+<% } -%>
+
 <% if (includeBabel) { -%>
 gulp.task('html', ['styles', 'scripts'], () => {
 <% } else { -%>
@@ -197,6 +210,6 @@ gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
 gulp.task('default', () => {
   return new Promise(resolve => {
     dev = false;
-    runSequence(['clean', 'wiredep'], 'build', resolve);
+    runSequence(['clean', 'wiredep'], 'build',<% if (includeModernizr) { -%> 'modernizr',<% } %> resolve);
   });
 });

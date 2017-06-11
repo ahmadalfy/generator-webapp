@@ -125,6 +125,7 @@ module.exports = class extends Generator {
         includeBootstrap: this.includeBootstrap,
         legacyBootstrap: this.legacyBootstrap,
         includeBabel: this.options['babel'],
+        includeModernizr: this.includeModernizr,
         testFramework: this.options['test-framework']
       }
     );
@@ -138,6 +139,7 @@ module.exports = class extends Generator {
         includeSass: this.includeSass,
         includeBabel: this.options['babel'],
         includeJQuery: this.includeJQuery,
+        includeModernizr: this.includeModernizr
       }
     );
   }
@@ -210,7 +212,7 @@ module.exports = class extends Generator {
     }
 
     if (this.includeModernizr) {
-      bowerJson.dependencies['modernizr'] = '~2.8.1';
+      bowerJson.dependencies['modernizr'] = '~3.5.0';
     }
 
     this.fs.writeJSON('bower.json', bowerJson);

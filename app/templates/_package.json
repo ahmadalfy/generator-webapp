@@ -18,7 +18,8 @@
     "gulp-filter": "^4.0.0",<% } %>
     "gulp-htmlmin": "^3.0.0",
     "gulp-if": "^2.0.2",
-    "gulp-imagemin": "^3.0.1",
+    "gulp-imagemin": "^3.0.1",<% if (includeModernizr) { %>
+    "gulp-modernizr": "^1.0.0-alpha",<% } %>
     "gulp-load-plugins": "^1.2.4",<% if (includeBabel || includeSass) { %>
     "gulp-plumber": "^1.0.1",<% } if (includeSass) { %>
     "gulp-sass": "^3.0.0",<% } %>
